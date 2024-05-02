@@ -87,5 +87,10 @@ namespace BlackJack
                     break;
             }
         }
+
+        public void PrintCard()
+        {
+            Console.WriteLine($"あなたの引いたカードは{Suit}の{Face}");
+        }
     }
 }
