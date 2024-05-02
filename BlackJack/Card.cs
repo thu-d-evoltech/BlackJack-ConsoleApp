@@ -10,7 +10,7 @@ namespace BlackJack
     {
         ハート, ダイヤ,スペード, グラブ 
     }
- /*   public enum CardFace
+    public enum CardFace
     {
         A, _2, _3, _4, _5, _6, _7, _8, _9, _10, J, Q, K
     }
@@ -75,6 +75,6 @@ namespace BlackJack
         public void PrintCard()
         {
             Console.WriteLine($"あなたの引いたカードは{Suit}の{Face}");
-        }*/
+        }
     }
 }

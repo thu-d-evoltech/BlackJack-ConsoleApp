@@ -8,14 +8,17 @@ namespace BlackJack
 {
     internal class Deck
     {
-        private List<Card> deck = new List<Card>(52);
+        private List<Card> deck;
         public Deck()
         {
-            DeckMethod();
+            //スタンダード 52-カード デッキを作成する
+            deck = new List<Card>(52);
+            InitializeDeck();
+            Shuffle();
         }
 
-        //Tạo bộ bài từ 4 tính chất và 13 lá
-        public void DeckMethod()
+        
+        public void InitializeDeck()
         {
             for (int i = 0; i < 4; i++)
             {
@@ -26,13 +29,21 @@ namespace BlackJack
             }
         }
 
+        //カードのシャッフル
         public void Shuffle()
         {
             Random random = new Random();
             int n = deck.Count;
 
-            //Mỗi vòng lặp tìm một thẻ ngẫu nhiên để chèn vào đối tượng danh sách thẻ mới.
-
+            while (n > 1)
+            {
+                n--;
+                int k = random.Next(0, n);
+                Card cards = deck[k];
+                deck[k] = cards;
+                deck[n] = cards;
+            }
         }
+        
     }
 }
