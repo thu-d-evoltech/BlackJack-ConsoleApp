@@ -38,12 +38,26 @@ namespace BlackJack
             while (n > 1)
             {
                 n--;
-                int k = random.Next(0, n);
+                int k = random.Next(n + 1);
                 Card cards = deck[k];
-                deck[k] = cards;
+                deck[k] = deck[n];
                 deck[n] = cards;
             }
         }
-        
+
+        //カードを引く
+        public Card DrawCard()
+        {
+            Card card = deck[0];
+            deck.RemoveAt(0);
+            return card;
+        }
+
+        // デッキに残っているカード数を返す
+        public int GetRemainingCards()
+        {
+            return deck.Count;
+        }
+
     }
 }
