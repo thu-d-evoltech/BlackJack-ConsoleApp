@@ -33,27 +33,34 @@ namespace BlackJack
             return total;
         }
 
+        //現在のカードの合計
+        public void ShowTotal()
+        {
+            Console.WriteLine($"あなたの現在の得点は{this.GetTotal()}です。");
+        }
+
         public void ShowPlayerCards ()
         {
             foreach (var card in Hand)
             {
-                Console.WriteLine($"あなたの引いたカードは{card.Suit}の{card.FaceName}です。");
+                card.PrintCard();
             }
-            Console.WriteLine($"あなたの現在の得点は{this.GetTotal()}です。");
+            
         }
 
         public void ShowDealerCards() 
         {
-            foreach (Card value in Hand)
+            foreach (var value in Hand)
             {
                 if (value == Hand[0])
                 {
-                    Console.WriteLine($"ディーラーの引いたカードは{Hand[0].Suit}の{Hand[0].FaceName}です。");
+                    Console.WriteLine($"ディーラーの引いたカードは{this.Hand[0].Suit}の{this.Hand[0].FaceName}です。");
                 } else
                 {
                     Console.WriteLine("ディーラーの2枚目のカードは分かりません");
                 }
             }
         }
+
     }
 }
