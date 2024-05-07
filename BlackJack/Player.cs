@@ -45,7 +45,7 @@ namespace BlackJack
             {
                 card.PrintCard();
             }
-            
+            ShowTotal();
         }
 
         public void ShowDealerCards() 
