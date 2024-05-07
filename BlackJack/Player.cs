@@ -9,7 +9,7 @@ namespace BlackJack
 {
     internal class Player
     {
-        public string player {  get; set; }
+        //public string player {  get; set; }
         public List<Card> Hand { get; set; }
 
         public bool Turn { get; set; } = true;
@@ -44,7 +44,6 @@ namespace BlackJack
             {
                 card.PrintCard();
             }
-            ShowTotal();
         }
 
         public void ShowDealerCards() 
