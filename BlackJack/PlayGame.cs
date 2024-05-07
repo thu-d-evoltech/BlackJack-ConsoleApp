@@ -89,9 +89,21 @@ namespace BlackJack
         {
             Console.WriteLine($"あなたの得点は{player.GetTotal()}です。");
             Console.WriteLine($"ディーラーの得点は{dealer.GetTotal()}です。");
-            if (player.GetTotal() > dealer.GetTotal() && player.GetTotal() <= 21)
+            if (player.GetTotal() > 21)
+            {
+                Console.WriteLine("あなたの負けです！");
+            }
+            else if(dealer.GetTotal() > 21)
             {
                 Console.WriteLine("あなたの勝ちです！");
+            }
+            else if(player.GetTotal() > dealer.GetTotal())
+            {
+                Console.WriteLine("あなたの勝ちです！");
+            }
+            else if(player.GetTotal() == dealer.GetTotal())
+            {
+                Console.WriteLine("引き分けでした！");
             }
             else
             {
