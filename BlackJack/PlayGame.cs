@@ -35,7 +35,7 @@ namespace BlackJack
             player.ShowTotal();
 
             GetPlayerTurn();
-            
+            GetDealerTurn();
         }
 
         //プレイヤーのターン
@@ -69,5 +69,19 @@ namespace BlackJack
                 }
             }
         }
+
+        //ディーラーのターン
+        public void GetDealerTurn()
+        {
+            Console.WriteLine($"ディーラーの2枚目のカードは{dealer.Hand[1].Suit}の{dealer.Hand[1].FaceName}です。");
+            Console.WriteLine($"ディーラーの現在の得点は{dealer.GetTotal()}です。");
+            while (dealer.GetTotal() < 17)
+            {
+                Card newcard = deck.DrawCard();
+                dealer.Hand.Add(newcard);
+                Console.WriteLine($"ディーラーの引いたカードは{newcard.Suit}の{newcard.FaceName}です。");
+            }
+        }
+
     }
 }
