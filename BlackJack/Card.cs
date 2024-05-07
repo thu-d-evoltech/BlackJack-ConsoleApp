@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack
 {
+    //列挙型）を定義する
     public enum CardSuit
     {
         ハート, ダイヤ,スペード, グラブ 
@@ -21,7 +22,7 @@ namespace BlackJack
         public string FaceName { get; }
         public int FaceValue { get; }
 
-
+        //Cardクラスのコンストラクターを定義する
         public Card(CardSuit suit, CardFace face)
         {
             Face = face;
@@ -88,6 +89,7 @@ namespace BlackJack
             }
         }
 
+        //カードの表示
         public void PrintCard()
         {
             Console.WriteLine($"あなたの引いたカードは{this.Suit}の{this.FaceName}です。");

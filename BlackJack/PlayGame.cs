@@ -12,6 +12,7 @@ namespace BlackJack
         private Player player;
         private Player dealer;
 
+        //PlayGameクラスのコンストラクターを定義する
         public PlayGame()
         {
             deck = new Deck();
@@ -21,9 +22,11 @@ namespace BlackJack
             dealer = new Player();
         }
 
+        //ゲームの開始
         public void GetPlay()
         {
             Console.WriteLine("ゲームを開始します。");
+            Console.WriteLine("------------------------------");
 
             player.Hand.Add(deck.DrawCard());
             dealer.Hand.Add(deck.DrawCard());
@@ -36,6 +39,8 @@ namespace BlackJack
 
             GetPlayerTurn();
             GetDealerTurn();
+            Console.WriteLine("");
+
             GetResuft();
         }
 

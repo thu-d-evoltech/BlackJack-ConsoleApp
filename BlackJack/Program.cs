@@ -1,6 +1,7 @@
 ﻿namespace BlackJack;
 public class Program
 {
+    //コンソールで実効する
     public static void Main()
     {
         Console.WriteLine("☆ ★ ☆ ★ ☆ ★ ☆ ★  ブラックジャックへようこそ！ ☆ ★ ☆ ★ ☆ ★ ☆ ★");

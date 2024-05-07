@@ -9,15 +9,12 @@ namespace BlackJack
 {
     internal class Player
     {
-        //public string player {  get; set; }
         public List<Card> Hand { get; set; }
-
-        public bool Turn { get; set; } = true;
 
         public Player()
         {
             //プレイヤーは最大5枚のカードを持る
-            Hand = new List<Card>();
+            Hand = new List<Card>(5);
             
         }
 
@@ -32,12 +29,13 @@ namespace BlackJack
             return total;
         }
 
-        //現在のカードの合計
+        //合計の表示
         public void ShowTotal()
         {
             Console.WriteLine($"あなたの現在の得点は{this.GetTotal()}です。");
         }
 
+        //プレイヤーのカードを表示
         public void ShowPlayerCards()
         {
             foreach (var card in this.Hand)
@@ -46,6 +44,7 @@ namespace BlackJack
             }
         }
 
+        //ディーラーのカードを表示
         public void ShowDealerCards() 
         {
              Console.WriteLine($"ディーラーの引いたカードは{this.Hand[0].Suit}の{this.Hand[0].FaceName}です。");

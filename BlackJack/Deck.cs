@@ -8,6 +8,7 @@ namespace BlackJack
 {
     internal class Deck
     {
+        //リストの宣言
         private List<Card> deck;
         public Deck()
         {
@@ -17,7 +18,7 @@ namespace BlackJack
             Shuffle();
         }
 
-        
+        //デッキの初期化
         public void InitializeDeck()
         {
             for (int i = 0; i < 4; i++)
@@ -52,12 +53,5 @@ namespace BlackJack
             deck.RemoveAt(0);
             return card;
         }
-
-        // デッキに残っているカード数を返す
-        public int GetRemainingCards()
-        {
-            return deck.Count;
-        }
-
     }
 }
