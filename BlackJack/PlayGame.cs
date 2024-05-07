@@ -20,5 +20,18 @@ namespace BlackJack
             player = new Player();
             dealer = new Player();
         }
+
+        public void GetPlay()
+        {
+            player.Hand.Add(deck.DrawCard());
+            dealer.Hand.Add(deck.DrawCard());
+            player.Hand.Add(deck.DrawCard());
+            dealer.Hand.Add(deck.DrawCard());
+
+            player.ShowPlayerCards();
+            dealer.ShowDealerCards();
+            player.ShowTotal();
+
+        }
     }
 }
