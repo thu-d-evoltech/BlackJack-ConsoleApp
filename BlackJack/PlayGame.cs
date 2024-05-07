@@ -23,6 +23,8 @@ namespace BlackJack
 
         public void GetPlay()
         {
+            Console.WriteLine("ゲームを開始します。");
+
             player.Hand.Add(deck.DrawCard());
             dealer.Hand.Add(deck.DrawCard());
             player.Hand.Add(deck.DrawCard());
@@ -32,6 +34,40 @@ namespace BlackJack
             dealer.ShowDealerCards();
             player.ShowTotal();
 
+            GetPlayerTurn();
+            
+        }
+
+        //プレイヤーのターン
+        public void GetPlayerTurn()
+        {
+            while (true)
+            {
+                Console.WriteLine("カードを引きますか？ひく場合はYを、引かない場合はNを入力してください。");
+                string choice = Console.ReadLine();
+
+                if (choice == "Y")
+                {
+                    Card newCard = deck.DrawCard();
+                    player.Hand.Add(newCard);
+
+                    newCard.PrintCard();
+                    player.ShowTotal();
+
+                    if (player.GetTotal() >= 21)
+                    {
+                        break;
+                    }
+                }
+                else if (choice == "N")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Y又はNを入力してください。");
+                }
+            }
         }
     }
 }

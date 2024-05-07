@@ -4,8 +4,8 @@ public class Program
     public static void Main()
     {
         Console.WriteLine("ブラックジャックへようこそ！");
-        Console.WriteLine("ゲームを開始します。");
 
-        
+        PlayGame playGame = new PlayGame();
+        playGame.GetPlay();
     }
 }
