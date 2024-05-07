@@ -50,16 +50,8 @@ namespace BlackJack
 
         public void ShowDealerCards() 
         {
-            foreach (var value in Hand)
-            {
-                if (value == Hand[0])
-                {
-                    Console.WriteLine($"ディーラーの引いたカードは{this.Hand[0].Suit}の{this.Hand[0].FaceName}です。");
-                } else
-                {
-                    Console.WriteLine("ディーラーの2枚目のカードは分かりません");
-                }
-            }
+             Console.WriteLine($"ディーラーの引いたカードは{this.Hand[0].Suit}の{this.Hand[0].FaceName}です。");
+             Console.WriteLine("ディーラーの2枚目のカードは分かりません");
         }
 
     }
