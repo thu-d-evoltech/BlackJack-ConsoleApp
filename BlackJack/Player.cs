@@ -17,9 +17,8 @@ namespace BlackJack
         public Player()
         {
             //プレイヤーは最大5枚のカードを持る
-            Hand = new List<Card>(5);
-            ShowDealerCards();
-            ShowPlayerCards();
+            Hand = new List<Card>();
+            
         }
 
         //プレイヤーの持っているカードの合計
@@ -39,9 +38,9 @@ namespace BlackJack
             Console.WriteLine($"あなたの現在の得点は{this.GetTotal()}です。");
         }
 
-        public void ShowPlayerCards ()
+        public void ShowPlayerCards()
         {
-            foreach (var card in Hand)
+            foreach (var card in this.Hand)
             {
                 card.PrintCard();
             }
