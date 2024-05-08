@@ -12,5 +12,7 @@ public class Program
 
         Console.WriteLine("------------------------------");
         Console.WriteLine("ブラックジャック終了！また遊んでね★");
+
+        Console.ReadKey();
     }
 }
