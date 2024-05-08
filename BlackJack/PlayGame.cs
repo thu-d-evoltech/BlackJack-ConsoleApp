@@ -27,6 +27,7 @@ namespace BlackJack
         {
             Console.WriteLine("ゲームを開始します。");
             Console.WriteLine("------------------------------");
+            Program.Sleep();
 
             player.Hand.Add(deck.DrawCard());
             dealer.Hand.Add(deck.DrawCard());
@@ -38,6 +39,7 @@ namespace BlackJack
             player.ShowTotal();
 
             GetPlayerTurn();
+            Program.Sleep(550);
             GetDealerTurn();
             Console.WriteLine("");
 
