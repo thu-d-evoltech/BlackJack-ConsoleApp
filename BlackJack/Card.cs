@@ -9,7 +9,7 @@ namespace BlackJack
     //列挙型）を定義する
     public enum CardSuit
     {
-        ハート, ダイヤ,スペード, グラブ 
+        ハート, ダイヤ,スペード, クラブ 
     }
     public enum CardFace
     {
