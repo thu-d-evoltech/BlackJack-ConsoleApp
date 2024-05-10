@@ -16,13 +16,23 @@ public class Program
             playGame.GetPlay();
 
             Console.WriteLine("");
-            Console.Write("遊び続けますか? 遊ぶ場合はYを、遊ばない場合はNを入力してください。\n");
+            Console.Write("遊び続けますか?　遊ぶ場合 : Y | 遊ばない場合 : N　を入力してください\n");
             string input = Console.ReadLine();
-            continuePlaying = (input.ToUpper() == "Y");
+            if (input == "Y" || input == "v")
+            {
+                continuePlaying = true;
+            }
+            else if (input == "N" || input == "n")
+            {
+                continuePlaying = false;
+                Console.WriteLine("------------------------------");
+                Console.WriteLine("ブラックジャック終了！ありがとうございました★");
+            }
+            else
+            {
+                Console.WriteLine("Y又はNを入力してください");
+            }
         }
-
-        Console.WriteLine("------------------------------");
-        Console.WriteLine("ブラックジャック終了！ありがとうございました★");
 
         Console.ReadKey();
 

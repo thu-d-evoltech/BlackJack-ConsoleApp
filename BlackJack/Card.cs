@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack
 {
-    //列挙型）を定義する
+    //列挙型を定義する
     public enum CardSuit
     {
         ハート, ダイヤ,スペード, クラブ 
