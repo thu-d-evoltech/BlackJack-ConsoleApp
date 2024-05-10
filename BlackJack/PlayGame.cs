@@ -73,7 +73,7 @@ namespace BlackJack
 
                     Console.WriteLine("---------------------------------------");
                     Console.WriteLine($"引いたカード：{newCard.Suit}の{newCard.FaceName}");
-                    Console.Write("あなたのカードは：");
+                    Console.Write("あなたのカード：");
                     player.ShowCards();
                     Console.WriteLine($"あなたの得点：{player.GetTotal()}");
                     Console.WriteLine("---------------------------------------");
