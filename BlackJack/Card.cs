@@ -88,11 +88,5 @@ namespace BlackJack
                     break;
             }
         }
-
-        //カードの表示
-        public void PrintCard()
-        {
-            Console.WriteLine($"あなたの引いたカードは{this.Suit}の{this.FaceName}です。");
-        }
     }
 }

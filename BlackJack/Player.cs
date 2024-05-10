@@ -29,26 +29,24 @@ namespace BlackJack
             return total;
         }
 
-        //合計の表示
-        public void ShowTotal()
-        {
-            Console.WriteLine($"あなたの現在の得点は{this.GetTotal()}です。");
-        }
-
         //プレイヤーのカードを表示
-        public void ShowPlayerCards()
+        public void ShowCards()
         {
-            foreach (var card in this.Hand)
+            string result = "";
+            foreach (var card in Hand)
             {
-                card.PrintCard();
+                result += card.Suit + "の"  + card.FaceName + "、";
             }
+            result = result.TrimEnd('、');
+            Console.WriteLine(result);
+
         }
 
         //ディーラーのカードを表示
         public void ShowDealerCards() 
         {
-             Console.WriteLine($"ディーラーの引いたカードは{this.Hand[0].Suit}の{this.Hand[0].FaceName}です。");
-             Console.WriteLine("ディーラーの2枚目のカードは分かりません");
+             Console.WriteLine($"ディーラーのカード：{this.Hand[0].Suit}の{this.Hand[0].FaceName}");
+             Console.WriteLine("ディーラーの2枚目の裏向きです");
         }
 
     }

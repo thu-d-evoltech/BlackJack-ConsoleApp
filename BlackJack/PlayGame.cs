@@ -25,8 +25,9 @@ namespace BlackJack
         //ゲームの開始
         public void GetPlay()
         {
-            Console.WriteLine("ゲームを開始します。");
-            Console.WriteLine("-----------------------------------------------");
+            Console.WriteLine("");
+            Console.WriteLine("ゲームを開始します！\n");
+            Console.WriteLine("---------------------------------------");
             Program.Sleep();
 
             player.Hand.Add(deck.DrawCard());
@@ -34,47 +35,60 @@ namespace BlackJack
             player.Hand.Add(deck.DrawCard());
             dealer.Hand.Add(deck.DrawCard());
 
-            player.ShowPlayerCards();
+            Console.Write("あなたのカードは：");
+            player.ShowCards();
+            Console.WriteLine($"あなたの得点：{player.GetTotal()}");
+            Console.WriteLine("---------------------------------------");
             dealer.ShowDealerCards();
-            player.ShowTotal();
 
             GetPlayerTurn();
-            Program.Sleep(550);
-            GetDealerTurn();
-            Console.WriteLine("");
+            Program.Sleep();
 
+            GetDealerTurn();
+            Console.WriteLine("ゲームが完了しました\n");
+
+            Program.Sleep();
+            Console.WriteLine("結果");
+            Console.WriteLine("---------------------------------------");
             GetResuft();
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ");
+
         }
 
         //プレイヤーのターン
         public void GetPlayerTurn()
         {
-            Console.WriteLine("カードを引きますか？　引く場合：Y | 引かない場合：N　を入力してください");
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("カードを引きますか？");
 
             while (true)
             {
+                Console.WriteLine("引く場合：Y | 引かない場合：N　を入力してください");
                 string choice = Console.ReadLine();
 
-                if (choice == "Y" || choice == "y")
+                if (choice.ToUpper() == "Y")
                 {
                     Card newCard = deck.DrawCard();
                     player.Hand.Add(newCard);
 
-                    newCard.PrintCard();
-                    player.ShowTotal();
+                    Console.WriteLine("---------------------------------------");
+                    Console.WriteLine($"引いたカード：{newCard.Suit}の{newCard.FaceName}");
+                    Console.Write("あなたのカードは：");
+                    player.ShowCards();
+                    Console.WriteLine($"あなたの得点：{player.GetTotal()}");
+                    Console.WriteLine("---------------------------------------");
 
                     if (player.GetTotal() >= 21)
                     {
+
                         break;
                     }
                 }
-                else if (choice == "N" || choice == "n")
+                else if (choice.ToUpper() == "N")
                 {
+                    Console.WriteLine("---------------------------------------");
                     break;
-                }
-                else
-                {
-                    Console.WriteLine("Y又はNを入力してください。");
                 }
             }
         }
@@ -82,40 +96,64 @@ namespace BlackJack
         //ディーラーのターン
         public void GetDealerTurn()
         {
-            Console.WriteLine($"ディーラーの2枚目のカードは{dealer.Hand[1].Suit}の{dealer.Hand[1].FaceName}です。");
-            Console.WriteLine($"ディーラーの現在の得点は{dealer.GetTotal()}です。");
-            while (dealer.GetTotal() < 17)
+            Console.WriteLine("あなたの番が終了したのでディーラーの番になります");
+            Console.WriteLine("ディーラーは得点が17点以上になるまでカードを引きます\n");
+
+            Console.WriteLine($"裏向きの2枚目のカード：{dealer.Hand[1].Suit}の{dealer.Hand[1].FaceName}");
+            Console.WriteLine($"ディーラーの得点：{dealer.GetTotal()}");
+            
+            while (true)
             {
-                Card newcard = deck.DrawCard();
-                dealer.Hand.Add(newcard);
-                Console.WriteLine($"ディーラーの引いたカードは{newcard.Suit}の{newcard.FaceName}です。");
+                string str = "";
+                if (dealer.GetTotal() < 17)
+                {
+                    Program.Sleep();
+                    Card card = deck.DrawCard();
+                    dealer.Hand.Add(card);
+                    str = card.Suit + "の" + card.FaceName;
+                } 
+                else if(dealer.GetTotal() >= 17)
+                {
+                    Console.WriteLine("17点以上になったため、ディーラーの番を終了します\n");
+                    break;
+                }
+                Console.WriteLine($"{str} のカードを引きました");
             }
+
         }
 
         //結果の表示
         public void GetResuft()
         {
-            Console.WriteLine($"あなたの得点は{player.GetTotal()}です。");
-            Console.WriteLine($"ディーラーの得点は{dealer.GetTotal()}です。");
+            Console.WriteLine("あなた");
+            Console.Write("　カード："); player.ShowCards();
+            Console.WriteLine($"　得点：{player.GetTotal()}");
+            Console.WriteLine("---------------------------------------");
+
+            Console.WriteLine("ディーラー");
+            Console.Write("　カード："); dealer.ShowCards();
+            Console.WriteLine($"　得点：{dealer.GetTotal()}");
+            Console.WriteLine("---------------------------------------");
+
             if (player.GetTotal() > 21)
             {
-                Console.WriteLine("あなたの負けです！");
+                Console.WriteLine("勝敗 ： あなたの負けです！");
             }
             else if(dealer.GetTotal() > 21)
             {
-                Console.WriteLine("あなたの勝ちです！");
+                Console.WriteLine("勝敗 ： あなたの勝ちです！");
             }
             else if(player.GetTotal() > dealer.GetTotal())
             {
-                Console.WriteLine("あなたの勝ちです！");
+                Console.WriteLine("勝敗 ： あなたの勝ちです！");
             }
             else if(player.GetTotal() == dealer.GetTotal())
             {
-                Console.WriteLine("引き分けでした！");
+                Console.WriteLine("勝敗 ： 引き分けでした！");
             }
             else
             {
-                Console.WriteLine("あなたの負けです！");
+                Console.WriteLine("勝敗 ： あなたの負けです！");
             }
         }
     }

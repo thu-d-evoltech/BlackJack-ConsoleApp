@@ -5,7 +5,6 @@ public class Program
     public static void Main()
     {
         Console.WriteLine("☆ ★ ☆ ★ ☆ ★ ☆ ★  ブラックジャックへようこそ！ ☆ ★ ☆ ★ ☆ ★ ☆ ★");
-        Console.WriteLine("");
 
         //ゲームをリプレイ
         bool continuePlaying = true;
@@ -16,23 +15,12 @@ public class Program
             playGame.GetPlay();
 
             Console.WriteLine("");
-            Console.Write("遊び続けますか?　遊ぶ場合 : Y | 遊ばない場合 : N　を入力してください\n");
+            Console.Write("遊び続けますか?　遊ぶ場合はYを、 遊ばない場合は任意のキーを入力してください\n");
             string input = Console.ReadLine();
-            if (input == "Y" || input == "v")
-            {
-                continuePlaying = true;
-            }
-            else if (input == "N" || input == "n")
-            {
-                continuePlaying = false;
-                Console.WriteLine("------------------------------");
-                Console.WriteLine("ブラックジャック終了！ありがとうございました★");
-            }
-            else
-            {
-                Console.WriteLine("Y又はNを入力してください");
-            }
+            continuePlaying = (input.ToUpper() == "Y");
         }
+        Console.WriteLine("------------------------------");
+        Console.WriteLine("ブラックジャック終了！ありがとうございました★");
 
         Console.ReadKey();
 
