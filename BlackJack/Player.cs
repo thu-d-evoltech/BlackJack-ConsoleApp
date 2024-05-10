@@ -46,8 +46,7 @@ namespace BlackJack
         public void ShowDealerCards() 
         {
              Console.WriteLine($"ディーラーのカード：{this.Hand[0].Suit}の{this.Hand[0].FaceName}");
-             Console.WriteLine("ディーラーの2枚目の裏向きです");
+             Console.WriteLine("ディーラーの2枚目は裏向きです");
         }
-
     }
 }
