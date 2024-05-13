@@ -45,7 +45,7 @@ namespace BlackJack
             Program.Sleep();
 
             GetDealerTurn();
-            Console.WriteLine("ゲームが完了しました\n");
+            Console.WriteLine("\nゲームが完了しました\n");
 
             Program.Sleep();
             Console.WriteLine("結果");
@@ -100,12 +100,18 @@ namespace BlackJack
         public void GetDealerTurn()
         {
             Console.WriteLine("あなたの番が終了したのでディーラーの番になります");
-            Console.WriteLine("ディーラーは得点が17点以上になるまでカードを引きます");
-            Console.WriteLine("プレイヤーはバーストしたら、ディーラーがカードを引きません\n");
 
+            if (player.GetTotal() < 21)
+            {
+                Console.WriteLine("ディーラーは得点が17点以上になるまでカードを引きます\n");
+            }
+            else
+            {
+                Console.WriteLine("プレイヤーはバーストなので、ディーラーがカードを引きません\n");
+            }
             Console.WriteLine($"裏向きの2枚目のカード：{dealer.Hand[1].Suit}の{dealer.Hand[1].FaceName}");
             Console.WriteLine($"ディーラーの得点：{dealer.GetTotal()}");
-            
+
             while (true)
             {
                 if (dealer.GetTotal() < 17 && player.GetTotal() < 21)
@@ -118,7 +124,7 @@ namespace BlackJack
                 } 
                 else if (dealer.GetTotal() > 17)
                 {
-                    Console.WriteLine("17点以上になったため、ディーラーの番を終了します\n");
+                    Console.WriteLine("17点以上になったため、ディーラーの番を終了します");
                     break;
                 }
                 else 
