@@ -28,29 +28,33 @@ namespace BlackJack
         //ゲームの開始
         public void Play()
         {
-
             Console.WriteLine("\nゲームを開始します！\n");
             Console.WriteLine(Line);
             Program.Sleep();
 
+            //カードを配る
             Player.Hand.Add(Deck.DrawCard());
             Dealer.Hand.Add(Deck.DrawCard());
             Player.Hand.Add(Deck.DrawCard());
             Dealer.Hand.Add(Deck.DrawCard());
 
+            //プレイヤーとディーラーのカードを表示する
             Console.Write("あなたのカード：");
             Player.ShowCards();
             Console.WriteLine($"あなたの得点：{Player.GetTotal()}");
             Console.WriteLine(Line);
             Dealer.ShowDealerCards();
 
+            //プレイヤーのターンの開始
             PlayerTurn();
             Program.Sleep();
 
+            //ディーラーのターンの開始
             PlayRule();
             DealerTurn();
-            Console.WriteLine("ゲームが完了しました\n");
+            Console.WriteLine("\nゲームが完了しました\n");
 
+            //ゲーム完了、勝敗を表示する
             Program.Sleep();
             Console.WriteLine("結果");
             Console.WriteLine(Line);
@@ -63,9 +67,10 @@ namespace BlackJack
         //プレイヤーのターン
         public void PlayerTurn()
         {
+            string request = "引く場合：Y | 引かない場合：N　を入力してください";
             Console.WriteLine(Line);
             Console.WriteLine("カードを引きますか？");
-            Console.WriteLine("引く場合：Y | 引かない場合：N　を入力してください");
+            Console.WriteLine(request);
 
 
             while (true)
@@ -89,7 +94,7 @@ namespace BlackJack
                     } 
                     else
                     {
-                        Console.WriteLine("引く場合：Y | 引かない場合：N　を入力してください");
+                        Console.WriteLine(request);
                     }
                 }
                 else if (choice.ToUpper() == "N")
@@ -131,7 +136,7 @@ namespace BlackJack
                 } 
                 else if (Dealer.GetTotal() > 17)
                 {
-                    Console.WriteLine("17点以上になったため、ディーラーの番を終了します\n");
+                    Console.WriteLine("17点以上になったため、ディーラーの番を終了します");
                     break;
                 }
                 else 
@@ -167,7 +172,7 @@ namespace BlackJack
             }
         }
 
-        //
+        //結果の表示
         public void DisplayInfo(string name, Player player)
         {
             Console.WriteLine($"{name}");
@@ -177,7 +182,7 @@ namespace BlackJack
             Console.WriteLine(Line);
         }
 
-        //結果の表示
+        //勝敗のメッセージ
         public void ShowResult()
         {
             DisplayInfo("あなた", Player);
