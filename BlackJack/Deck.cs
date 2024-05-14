@@ -21,9 +21,9 @@ namespace BlackJack
         //デッキの初期化
         public void InitializeDeck()
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < Enum.GetValues(typeof(CardSuit)).Length ; i++)
             {
-                for(int j = 0; j < 13; j++)
+                for(int j = 0; j < Enum.GetValues(typeof(CardFace)).Length; j++)
                 {
                     deck.Add(new Card((CardSuit)i, (CardFace)j));
                 }
