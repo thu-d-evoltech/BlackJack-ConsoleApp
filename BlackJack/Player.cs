@@ -14,7 +14,7 @@ namespace BlackJack
         public Player()
         {
             //プレイヤーは最大5枚のカードを持る
-            Hand = new List<Card>(5);
+            Hand = new List<Card>();
             
         }
 

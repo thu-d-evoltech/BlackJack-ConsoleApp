@@ -13,7 +13,7 @@ namespace BlackJack
         public Deck()
         {
             //スタンダード 52-カード デッキを作成する
-            deck = new List<Card>(52);
+            deck = new List<Card>();
             InitializeDeck();
             Shuffle();
         }
