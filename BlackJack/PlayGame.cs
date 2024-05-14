@@ -11,6 +11,7 @@ namespace BlackJack
         private Deck Deck;
         private Player Player;
         private Player Dealer;
+        const string Line = "---------------------------------------";
 
         //PlayGameクラスのコンストラクターを定義する
         public PlayGame()
@@ -27,7 +28,7 @@ namespace BlackJack
         {
             Console.WriteLine("");
             Console.WriteLine("ゲームを開始します！\n");
-            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(Line);
             Program.Sleep();
 
             Player.Hand.Add(Deck.DrawCard());
@@ -38,7 +39,7 @@ namespace BlackJack
             Console.Write("あなたのカード：");
             Player.ShowCards();
             Console.WriteLine($"あなたの得点：{Player.GetTotal()}");
-            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(Line);
             Dealer.ShowDealerCards();
 
             PlayerTurn();
@@ -49,9 +50,9 @@ namespace BlackJack
 
             Program.Sleep();
             Console.WriteLine("結果");
-            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(Line);
             ShowResult();
-            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(Line);
             Console.WriteLine("☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ");
 
         }
@@ -59,7 +60,7 @@ namespace BlackJack
         //プレイヤーのターン
         public void PlayerTurn()
         {
-            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(Line);
             Console.WriteLine("カードを引きますか？");
             Console.WriteLine("引く場合：Y | 引かない場合：N　を入力してください");
 
@@ -72,12 +73,12 @@ namespace BlackJack
                     Card newCard = Deck.DrawCard();
                     Player.Hand.Add(newCard);
 
-                    Console.WriteLine("---------------------------------------");
+                    Console.WriteLine(Line);
                     Console.WriteLine($"引いたカード：{newCard.Suit}の{newCard.FaceName}");
                     Console.Write("あなたのカード：");
                     Player.ShowCards();
                     Console.WriteLine($"あなたの得点：{Player.GetTotal()}");
-                    Console.WriteLine("---------------------------------------");
+                    Console.WriteLine(Line);
 
                     if (Player.GetTotal() >= 21)
                     {
@@ -90,7 +91,7 @@ namespace BlackJack
                 }
                 else if (choice.ToUpper() == "N")
                 {
-                    Console.WriteLine("---------------------------------------");
+                    Console.WriteLine(Line);
                     break;
                 }
             }
@@ -135,12 +136,12 @@ namespace BlackJack
             Console.WriteLine("あなた");
             Console.Write("　カード："); Player.ShowCards();
             Console.WriteLine($"　得点：{Player.GetTotal()}");
-            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(Line);
 
             Console.WriteLine("ディーラー");
             Console.Write("　カード："); Dealer.ShowCards();
             Console.WriteLine($"　得点：{Dealer.GetTotal()}");
-            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(Line);
 
             if (Player.GetTotal() > 21)
             {
