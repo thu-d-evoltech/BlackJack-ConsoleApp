@@ -23,7 +23,7 @@ namespace BlackJack
         }
 
         //ゲームの開始
-        public void GetPlay()
+        public void Play()
         {
             Console.WriteLine("");
             Console.WriteLine("ゲームを開始します！\n");
@@ -41,23 +41,23 @@ namespace BlackJack
             Console.WriteLine("---------------------------------------");
             dealer.ShowDealerCards();
 
-            GetPlayerTurn();
+            PlayerTurn();
             Program.Sleep();
 
-            GetDealerTurn();
+            DealerTurn();
             Console.WriteLine("ゲームが完了しました\n");
 
             Program.Sleep();
             Console.WriteLine("結果");
             Console.WriteLine("---------------------------------------");
-            GetResuft();
+            ShowResult();
             Console.WriteLine("---------------------------------------");
             Console.WriteLine("☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ");
 
         }
 
         //プレイヤーのターン
-        public void GetPlayerTurn()
+        public void PlayerTurn()
         {
             Console.WriteLine("---------------------------------------");
             Console.WriteLine("カードを引きますか？");
@@ -97,7 +97,7 @@ namespace BlackJack
         }
 
         //ディーラーのターン
-        public void GetDealerTurn()
+        public void DealerTurn()
         {
             Console.WriteLine("あなたの番が終了したのでディーラーの番になります");
             Console.WriteLine("ディーラーは得点が17点以上になるまでカードを引きます");
@@ -130,7 +130,7 @@ namespace BlackJack
         }
 
         //結果の表示
-        public void GetResuft()
+        public void ShowResult()
         {
             Console.WriteLine("あなた");
             Console.Write("　カード："); player.ShowCards();
