@@ -1,4 +1,6 @@
 ﻿
+using System.Text;
+
 namespace BlackJack
 {
     internal class PlayGame
@@ -6,11 +8,14 @@ namespace BlackJack
         private Deck Deck;
         private Player Player;
         private Player Dealer;
+        private StringBuilder sb;
         const string Line = "---------------------------------------";
 
         //PlayGameクラスのコンストラクターを定義する
         public PlayGame()
         {
+            sb = new StringBuilder();
+
             Deck = new Deck();
             Deck.Shuffle();
 
@@ -137,31 +142,35 @@ namespace BlackJack
                     break;
                 }
             }
-
         }
 
-        //勝敗を判断する
-        public bool? Determine()
+        public enum GameResult
+        {
+            Win,
+            Lose,
+            Draw
+        }
+        public GameResult Determine()
         {
             if (Player.GetTotal() > 21)
             {
-                return false;
+                return GameResult.Lose;
             }
             else if (Dealer.GetTotal() > 21)
             {
-                return true;
+                return GameResult.Win;
             }
             else if (Player.GetTotal() > Dealer.GetTotal())
             {
-                return true;
+                return GameResult.Win;
             }
             else if (Player.GetTotal() == Dealer.GetTotal())
             {
-                return null ;
+                return GameResult.Draw;
             }
             else
             {
-                return false;
+                return GameResult.Lose;
             }
         }
 
@@ -181,12 +190,12 @@ namespace BlackJack
             DisplayInfo("あなた", Player);
             DisplayInfo("ディーラー", Dealer);
 
-            bool? messenger = Determine();
-            if (messenger == true)
+            GameResult result = Determine();
+            if (result == GameResult.Win)
             {
                 Console.WriteLine("勝敗 ： あなたの勝ちです！");
             }
-            else if(messenger == false)
+            else if(result == GameResult.Lose)
             {
                 Console.WriteLine("勝敗 ： あなたの負けです！");
             }
