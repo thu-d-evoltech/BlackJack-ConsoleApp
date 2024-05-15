@@ -15,10 +15,7 @@ namespace BlackJack
         public PlayGame()
         {
             sb = new StringBuilder();
-
             Deck = new Deck();
-            Deck.Shuffle();
-
             Player = new Player();
             Dealer = new Player();
         }
@@ -63,7 +60,7 @@ namespace BlackJack
         }
 
         //プレイヤーのターン
-        public void PlayerTurn()
+        private void PlayerTurn()
         {
             string request = "引く場合：Y | 引かない場合：N　を入力してください";
             Console.WriteLine(Line);
@@ -104,7 +101,7 @@ namespace BlackJack
         }
 
         //ルールの説明
-        public void PlayRule()
+        private void PlayRule()
         {
             Console.WriteLine("あなたの番が終了したのでディーラーの番になります");
             if (Player.GetTotal() < 21)
@@ -120,7 +117,7 @@ namespace BlackJack
         }
 
         //ディーラーのターン
-        public void DealerTurn()
+        private void DealerTurn()
         {   
             while (true)
             {
@@ -144,13 +141,13 @@ namespace BlackJack
             }
         }
 
-        public enum GameResult
+        private enum GameResult
         {
             Win,
             Lose,
             Draw
         }
-        public GameResult Determine()
+        private GameResult Determine()
         {
             if (Player.GetTotal() > 21)
             {
@@ -175,7 +172,7 @@ namespace BlackJack
         }
 
         //結果の表示
-        public void DisplayInfo(string name, Player player)
+        private void DisplayInfo(string name, Player player)
         {
             Console.WriteLine($"{name}");
             Console.Write("　カード：");
@@ -185,7 +182,7 @@ namespace BlackJack
         }
 
         //勝敗のメッセージ
-        public void ShowResult()
+        private void ShowResult()
         {
             DisplayInfo("あなた", Player);
             DisplayInfo("ディーラー", Dealer);

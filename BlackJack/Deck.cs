@@ -14,7 +14,7 @@ namespace BlackJack
         }
 
         //デッキの初期化
-        public void InitializeDeck()
+        private void InitializeDeck()
         {
             for (int i = 0; i < Enum.GetValues(typeof(CardSuit)).Length ; i++)
             {
@@ -26,7 +26,7 @@ namespace BlackJack
         }
 
         //カードのシャッフル
-        public void Shuffle()
+        private void Shuffle()
         {
             Random random = new Random();
             int n = Decks.Count;
