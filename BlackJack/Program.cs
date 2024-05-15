@@ -2,12 +2,11 @@
 namespace BlackJack;
 public class Program
 {
-    //コンソールで実効する
     public static void Main()
     {
         Console.WriteLine("☆ ★ ☆ ★ ☆ ★ ☆ ★  ブラックジャックへようこそ！ ☆ ★ ☆ ★ ☆ ★ ☆ ★");
 
-        //ゲームをリプレイ
+        //ゲームのリプレイ変数を宣言する//
         bool continuePlaying = true;
 
         while (continuePlaying)
@@ -27,7 +26,7 @@ public class Program
 
     }
 
-    //スリープ時間
+    //スリープ時間のメッソド//
     public static void Sleep(int miliseconds = 1000)
     {
         Thread.Sleep(miliseconds);

@@ -1,11 +1,17 @@
 ﻿
 namespace BlackJack
 {
-    //列挙型を定義する
+    /// <summary>
+    /// カードのスートを表す列挙型です。
+    /// </summary>
     public enum CardSuit
     {
         ハート, ダイヤ,スペード, クラブ 
     }
+
+    /// <summary>
+    /// カードのフェースを表す列挙型です。
+    /// </summary>
     public enum CardFace
     {
         A, _2, _3, _4, _5, _6, _7, _8, _9, _10, J, Q, K
@@ -17,7 +23,11 @@ namespace BlackJack
         public string FaceName { get; }
         public int FaceValue { get; }
 
-        //Cardクラスのコンストラクターを定義する
+        //// <summary>
+        /// カードを初期化するコンストラクターです。
+        /// </summary>
+        /// <param name="suit">カードのスート</param>
+        /// <param name="face">カードのフェース</param>
         public Card(CardSuit suit, CardFace face)
         {
             Face = face;

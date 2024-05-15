@@ -7,12 +7,12 @@ namespace BlackJack
 
         public Player()
         {
-            //プレイヤーは最大5枚のカードを持る
             Hand = new List<Card>();
-            
         }
 
-        //プレイヤーの持っているカードの合計
+        /// <summary>
+        /// プレイヤーの持っているカードの合計を計算するメッソド。
+        /// </summary>
         public int GetTotal()
         {
             int total = 0;
@@ -23,7 +23,9 @@ namespace BlackJack
             return total;
         }
 
-        //プレイヤーのカードを表示
+        /// <summary>
+        /// プレイヤーとディーラーの持っているカードを表示するメッソド。
+        /// </summary>
         public void ShowCards()
         {
             string result = "";
@@ -36,7 +38,9 @@ namespace BlackJack
 
         }
 
-        //ディーラーのカードを表示
+        /// <summary>
+        /// 配った後、ディーラーのカードを表示するメッソド。
+        /// </summary>
         public void ShowDealerCards() 
         {
              Console.WriteLine($"ディーラーのカード：{this.Hand[0].Suit}の{this.Hand[0].FaceName}");

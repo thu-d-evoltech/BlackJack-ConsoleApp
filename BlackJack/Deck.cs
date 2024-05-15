@@ -3,17 +3,18 @@ namespace BlackJack
 {
     internal class Deck
     {
-        //リストの宣言
+        //リストの宣言//
         private List<Card> Decks;
         public Deck()
         {
-            //スタンダード 52-カード デッキを作成する
             Decks = new List<Card>();
             InitializeDeck();
             Shuffle();
         }
 
-        //デッキの初期化
+        /// <summary>
+        /// デッキの初期化するメッソド。
+        /// </summary>
         private void InitializeDeck()
         {
             for (int i = 0; i < Enum.GetValues(typeof(CardSuit)).Length ; i++)
@@ -25,7 +26,9 @@ namespace BlackJack
             }
         }
 
-        //カードのシャッフル
+        /// <summary>
+        /// カードをシャッフルするメッソド。
+        /// </summary>
         private void Shuffle()
         {
             Random random = new Random();
@@ -41,7 +44,9 @@ namespace BlackJack
             }
         }
 
-        //カードを引く
+        /// <summary>
+        /// カードの配る機能と引く機能を実行するメッソド。
+        /// </summary>
         public Card DrawCard()
         {
             Card card = Decks[0];
