@@ -26,7 +26,7 @@ namespace BlackJack
         /// <summary>
         /// プレイヤーとディーラーの持っているカードを表示するメッソド。
         /// </summary>
-        public void ShowCards()
+        public string ShowCards()
         {
             string result = "";
             foreach (var card in Hand)
@@ -34,12 +34,11 @@ namespace BlackJack
                 result += card.Suit + "の"  + card.FaceName + "、";
             }
             result = result.TrimEnd('、');
-            Console.WriteLine(result);
-
+            return result;
         }
 
         /// <summary>
-        /// 配った後、ディーラーのカードを表示するメッソド。
+        /// ディーラーのカードを表示するメッソド。
         /// </summary>
         public void ShowDealerCards() 
         {

@@ -8,13 +8,12 @@ namespace BlackJack
         private Deck Deck;
         private Player Player;
         private Player Dealer;
-        private StringBuilder sb;
+        private StringBuilder mess;
         const string Line = "---------------------------------------";
 
         //PlayGameクラスのコンストラクターを定義する//
         public PlayGame()
         {
-            sb = new StringBuilder();
             Deck = new Deck();
             Player = new Player();
             Dealer = new Player();
@@ -37,8 +36,7 @@ namespace BlackJack
             Dealer.Hand.Add(Deck.DrawCard());
             
             //プレイヤーとディーラーのカードを表示する//
-            Console.Write("あなたのカード：");
-            Player.ShowCards();
+            Console.WriteLine($"あなたのカード：{Player.ShowCards()}");
             Console.WriteLine($"あなたの得点：{Player.GetTotal()}");
             Console.WriteLine(Line);
             Dealer.ShowDealerCards();
@@ -59,7 +57,6 @@ namespace BlackJack
             ShowResult();
             Console.WriteLine(Line);
             Console.WriteLine("☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ☆ ★ ");
-
         }
 
         /// <summary>
@@ -82,8 +79,7 @@ namespace BlackJack
 
                     Console.WriteLine(Line);
                     Console.WriteLine($"引いたカード：{newCard.Suit}の{newCard.FaceName}");
-                    Console.Write("あなたのカード：");
-                    Player.ShowCards();
+                    Console.WriteLine($"あなたのカード：{Player.ShowCards()}");
                     Console.WriteLine($"あなたの得点：{Player.GetTotal()}");
                     Console.WriteLine(Line);
 
@@ -109,17 +105,20 @@ namespace BlackJack
         /// </summary>
         private void PlayRule()
         {
-            Console.WriteLine("あなたの番が終了したのでディーラーの番になります");
+            mess = new StringBuilder();
+            mess.AppendLine("あなたの番が終了したのでディーラーの番になります");
             if (Player.GetTotal() < 21)
             {
-                Console.WriteLine("ディーラーは得点が17点以上になるまでカードを引きます\n");
+                mess.AppendLine("ディーラーは得点が17点以上になるまでカードを引きます\n");
             }
             else
             {
-                Console.WriteLine("プレイヤーはバーストなので、ディーラーがカードを引きません\n");
+                mess.AppendLine("プレイヤーはバーストなので、ディーラーがカードを引きません\n");
             }
-            Console.WriteLine($"裏向きの2枚目のカード：{Dealer.Hand[1].Suit}の{Dealer.Hand[1].FaceName}");
-            Console.WriteLine($"ディーラーの得点：{Dealer.GetTotal()}");
+            mess.AppendLine($"裏向きの2枚目のカード：{Dealer.Hand[1].Suit}の{Dealer.Hand[1].FaceName}");
+            mess.AppendLine($"ディーラーの得点：{Dealer.GetTotal()}");
+
+            Console.WriteLine(mess.ToString());
         }
 
         /// <summary>
@@ -192,11 +191,13 @@ namespace BlackJack
         /// <param name="player">プレイヤーまたはディーラーのオブジェクト</param>
         private void DisplayInfo(string name, Player player)
         {
-            Console.WriteLine($"{name}");
-            Console.Write("　カード：");
-            player.ShowCards();
-            Console.WriteLine($"　得点：{player.GetTotal()}");
-            Console.WriteLine(Line);
+            mess = new StringBuilder();
+            mess.AppendLine($"{name}");
+            mess.AppendLine($"　カード：{player.ShowCards()}");
+            mess.AppendLine($"　得点：{player.GetTotal()}");
+            mess.AppendLine(Line);
+
+            Console.WriteLine(mess.ToString());
         }
 
         /// <summary>
