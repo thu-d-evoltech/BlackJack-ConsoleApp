@@ -6,7 +6,7 @@ public class Program
     {
         Console.WriteLine("☆ ★ ☆ ★ ☆ ★ ☆ ★  ブラックジャックへようこそ！ ☆ ★ ☆ ★ ☆ ★ ☆ ★");
 
-        //ゲームのリプレイ変数を宣言する//
+        // ゲームのリプレイ変数を宣言する
         bool continuePlaying = true;
 
         while (continuePlaying)
@@ -21,12 +21,13 @@ public class Program
         }
         Console.WriteLine("------------------------------");
         Console.WriteLine("ブラックジャック終了！ありがとうございました★");
-
         Console.ReadKey();
-
     }
 
-    //スリープ時間のメッソド//
+    /// <summary>
+    /// 指定されたミリ秒数だけ現在のスレッドを休止させます。
+    /// </summary>
+    /// <param name="miliseconds">休止させるミリ秒数。</param>
     public static void Sleep(int miliseconds = 1000)
     {
         Thread.Sleep(miliseconds);

@@ -2,7 +2,7 @@
 namespace BlackJack
 {
     /// <summary>
-    /// カードのスートを表す列挙型です。
+    /// カードのスートを表す列挙型
     /// </summary>
     public enum CardSuit
     {
@@ -10,7 +10,7 @@ namespace BlackJack
     }
 
     /// <summary>
-    /// カードのフェースを表す列挙型です。
+    /// カードのフェースを表す列挙型
     /// </summary>
     public enum CardFace
     {
@@ -18,13 +18,29 @@ namespace BlackJack
     }
     internal class Card
     {
+        /// <summary>
+        /// カードのフェースのプロパティ
+        /// </summary>
         public CardFace Face { get; }
+
+        /// <summary>
+        /// カードのスートのプロパティ
+        /// </summary>
         public CardSuit Suit { get; }
+
+        /// <summary>
+        /// カードのフェース名のプロパティ
+        /// </summary>
         public string FaceName { get; }
+
+        /// <summary>
+        /// カードのフェース値（数値カードの場合はその数値、絵札の場合は10）のプロパティ
+        /// </summary>
         public int FaceValue { get; }
 
-        //// <summary>
-        /// カードを初期化するコンストラクターです。
+        /// <summary>
+        /// Cardクラスのコンストラクターを定義する
+        /// カードを初期化する
         /// </summary>
         /// <param name="suit">カードのスート</param>
         /// <param name="face">カードのフェース</param>

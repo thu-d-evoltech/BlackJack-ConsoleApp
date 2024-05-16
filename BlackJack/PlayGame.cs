@@ -5,13 +5,24 @@ namespace BlackJack
 {
     internal class PlayGame
     {
+        /// <summary>
+        /// 山札
+        /// </summary>
         private Deck Deck;
-        private Player Player;
-        private Player Dealer;
-        private StringBuilder mess;
-        const string Line = "---------------------------------------";
 
-        //PlayGameクラスのコンストラクターを定義する//
+        /// <summary>
+        /// プレイヤー
+        /// </summary>
+        private Player Player;
+
+        /// <summary>
+        /// ディーラー
+        /// </summary>
+        private Player Dealer;
+
+        /// <summary>
+        /// PlayGameクラスのコンストラクターを定義する
+        /// </summary>
         public PlayGame()
         {
             Deck = new Deck();
@@ -21,7 +32,7 @@ namespace BlackJack
 
         /// <summary>
         /// すべてのゲームを実行するメソッド
-        /// ゲームを開始してプレイヤーとディーラーのカードを配り、ターンを進行し、結果を表示する。
+        /// ゲームを開始してプレイヤーとディーラーのカードを配り、ターンを進行し、結果を表示する
         /// </summary>
         public void Play()
         {
@@ -29,28 +40,28 @@ namespace BlackJack
             Console.WriteLine(Line);
             Program.Sleep();
 
-            //カードを配る//
+            // カードを配る
             Player.Hand.Add(Deck.DrawCard());
             Dealer.Hand.Add(Deck.DrawCard());
             Player.Hand.Add(Deck.DrawCard());
             Dealer.Hand.Add(Deck.DrawCard());
             
-            //プレイヤーとディーラーのカードを表示する//
+            // プレイヤーとディーラーのカードを表示する
             Console.WriteLine($"あなたのカード：{Player.ShowCards()}");
             Console.WriteLine($"あなたの得点：{Player.GetTotal()}");
             Console.WriteLine(Line);
             Dealer.ShowDealerCards();
 
-            //プレイヤーのターンの開始//
+            // プレイヤーのターンの開始
             PlayerTurn();
             Program.Sleep();
 
-            //ディーラーのターンの開始//
+            // ディーラーのターンの開始
             PlayRule();
             DealerTurn();
             Console.WriteLine("\nゲームが完了しました\n");
 
-            //ゲーム完了、勝敗を表示する//
+            // ゲーム完了、勝敗を表示する
             Program.Sleep();
             Console.WriteLine("結果");
             Console.WriteLine(Line);
@@ -60,7 +71,7 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// プレイヤーのターンを実行し、カードを引いて得点を表示するメソッド。
+        /// プレイヤーのターンを実行し、カードを引いて得点を表示するメソッド
         /// </summary>
         private void PlayerTurn()
         {
@@ -69,6 +80,7 @@ namespace BlackJack
             Console.WriteLine("カードを引きますか？");
             Console.WriteLine(request);
 
+            // プレイヤーがカードを引くかどうかを選択するループ
             while (true)
             {
                 string choice = Console.ReadLine();
@@ -101,11 +113,11 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// プレイヤーのターンが終了した後、ディーラーのターンを開始するルールを表示するメソッド。
+        /// プレイヤーのターンが終了した後、ディーラーのターンを開始するルールを表示するメソッド
         /// </summary>
         private void PlayRule()
         {
-            mess = new StringBuilder();
+            StringBuilder mess = new StringBuilder();
             mess.AppendLine("あなたの番が終了したのでディーラーの番になります");
             if (Player.GetTotal() < 21)
             {
@@ -117,13 +129,12 @@ namespace BlackJack
             }
             mess.AppendLine($"裏向きの2枚目のカード：{Dealer.Hand[1].Suit}の{Dealer.Hand[1].FaceName}");
             mess.AppendLine($"ディーラーの得点：{Dealer.GetTotal()}");
-
             Console.WriteLine(mess.ToString());
         }
 
         /// <summary>
-        /// ディーラーのターンを実行し、カードを引いて得点を表示するメソッド。
-        /// ディーラーの得点は17点を超えている場合、またはプレーヤーがバストされた場合、ディーラーはカードを引かない。
+        /// ディーラーのターンを実行し、カードを引いて得点を表示するメソッド
+        /// ディーラーの得点は17点を超えている場合、またはプレーヤーがバストされた場合、ディーラーはカードを引かない
         /// </summary>
         private void DealerTurn()
         {   
@@ -149,12 +160,14 @@ namespace BlackJack
             }
         }
 
-        ///ゲームの結果一覧を作る//
+        /// <summary>
+        /// ゲームの結果一覧を作る
+        /// </summary>
         private enum GameResult
         {
-            Win,
-            Lose,
-            Draw
+            Win,　// 勝ち
+            Lose,　// 負け
+            Draw　　//引き分け
         }
 
         /// <summary>
@@ -191,12 +204,11 @@ namespace BlackJack
         /// <param name="player">プレイヤーまたはディーラーのオブジェクト</param>
         private void DisplayInfo(string name, Player player)
         {
-            mess = new StringBuilder();
+            StringBuilder mess = new StringBuilder();
             mess.AppendLine($"{name}");
             mess.AppendLine($"　カード：{player.ShowCards()}");
             mess.AppendLine($"　得点：{player.GetTotal()}");
             mess.AppendLine(Line);
-
             Console.WriteLine(mess.ToString());
         }
 

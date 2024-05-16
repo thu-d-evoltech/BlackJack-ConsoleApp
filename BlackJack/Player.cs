@@ -3,8 +3,14 @@ namespace BlackJack
 {
     internal class Player
     {
+        /// <summary>
+        /// 持っているカードのリスト
+        /// </summary>
         public List<Card> Hand;
 
+        /// <summary>
+        /// Playerクラスのコンストラクターを定義する
+        /// </summary>
         public Player()
         {
             Hand = new List<Card>();

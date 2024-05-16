@@ -3,8 +3,14 @@ namespace BlackJack
 {
     internal class Deck
     {
-        //リストの宣言//
+        /// <summary>
+        /// 山札の宣言
+        /// </summary>
         private List<Card> Decks;
+
+        /// <summary>
+        /// Deckクラスのコンストラクターを定義する
+        /// </summary>
         public Deck()
         {
             Decks = new List<Card>();
@@ -13,7 +19,7 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// デッキの初期化するメッソド。
+        /// デッキの初期化するメソッド
         /// </summary>
         private void InitializeDeck()
         {
@@ -27,7 +33,7 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// カードをシャッフルするメッソド。
+        /// カードをシャッフルするメソッド
         /// </summary>
         private void Shuffle()
         {
@@ -45,7 +51,7 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// カードの配る機能と引く機能を実行するメッソド。
+        /// カードの配る機能と引く機能を実行するメソッド
         /// </summary>
         public Card DrawCard()
         {
