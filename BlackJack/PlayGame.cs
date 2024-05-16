@@ -31,7 +31,7 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// すべてのゲームを実行するメソッド
+        /// すべてのゲームを実行する
         /// ゲームを開始してプレイヤーとディーラーのカードを配り、ターンを進行し、結果を表示する
         /// </summary>
         public void Play()
@@ -48,7 +48,7 @@ namespace BlackJack
             
             // プレイヤーとディーラーのカードを表示する
             Console.WriteLine($"あなたのカード：{Player.ShowCards()}");
-            Console.WriteLine($"あなたの得点：{Player.GetTotal()}");
+            Console.WriteLine($"あなたの得点：{Player.GetHandTotal()}");
             Console.WriteLine(Line);
             Dealer.ShowDealerCards();
 
@@ -57,7 +57,7 @@ namespace BlackJack
             Program.Sleep();
 
             // ディーラーのターンの開始
-            PlayRule();
+            ShowPlayRule();
             DealerTurn();
             Console.WriteLine("\nゲームが完了しました\n");
 
@@ -71,7 +71,7 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// プレイヤーのターンを実行し、カードを引いて得点を表示するメソッド
+        /// プレイヤーのターンを実行し、カードを引いて得点を表示する
         /// </summary>
         private void PlayerTurn()
         {
@@ -92,10 +92,10 @@ namespace BlackJack
                     Console.WriteLine(Line);
                     Console.WriteLine($"引いたカード：{newCard.Suit}の{newCard.FaceName}");
                     Console.WriteLine($"あなたのカード：{Player.ShowCards()}");
-                    Console.WriteLine($"あなたの得点：{Player.GetTotal()}");
+                    Console.WriteLine($"あなたの得点：{Player.GetHandTotal()}");
                     Console.WriteLine(Line);
 
-                    if (Player.GetTotal() >= 21)
+                    if (Player.GetHandTotal() >= 21)
                     {
                         break;
                     } 
@@ -113,13 +113,13 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// プレイヤーのターンが終了した後、ディーラーのターンを開始するルールを表示するメソッド
+        /// プレイヤーのターンが終了した後、ディーラーのターンを開始するルールを表示する
         /// </summary>
-        private void PlayRule()
+        private void ShowPlayRule()
         {
             StringBuilder mess = new StringBuilder();
             mess.AppendLine("あなたの番が終了したのでディーラーの番になります");
-            if (Player.GetTotal() < 21)
+            if (Player.GetHandTotal() < 21)
             {
                 mess.AppendLine("ディーラーは得点が17点以上になるまでカードを引きます\n");
             }
@@ -128,27 +128,27 @@ namespace BlackJack
                 mess.AppendLine("プレイヤーはバーストなので、ディーラーがカードを引きません\n");
             }
             mess.AppendLine($"裏向きの2枚目のカード：{Dealer.Hand[1].Suit}の{Dealer.Hand[1].FaceName}");
-            mess.AppendLine($"ディーラーの得点：{Dealer.GetTotal()}");
+            mess.AppendLine($"ディーラーの得点：{Dealer.GetHandTotal()}");
             Console.WriteLine(mess.ToString());
         }
 
         /// <summary>
-        /// ディーラーのターンを実行し、カードを引いて得点を表示するメソッド
+        /// ディーラーのターンを実行し、カードを引いて得点を表示する
         /// ディーラーの得点は17点を超えている場合、またはプレーヤーがバストされた場合、ディーラーはカードを引かない
         /// </summary>
         private void DealerTurn()
         {   
             while (true)
             {
-                if (Dealer.GetTotal() < 17 && Player.GetTotal() < 21)
+                if (Dealer.GetHandTotal() < 17 && Player.GetHandTotal() < 21)
                 {
                     Program.Sleep();
                     Card card = Deck.DrawCard();
                     Dealer.Hand.Add(card);
                     Console.WriteLine($"{card.Suit}の{card.FaceName}のカードを引きました");
-                    Console.WriteLine($"ディーラーの得点：{Dealer.GetTotal()}");
+                    Console.WriteLine($"ディーラーの得点：{Dealer.GetHandTotal()}");
                 } 
-                else if (Dealer.GetTotal() > 17)
+                else if (Dealer.GetHandTotal() > 17)
                 {
                     Console.WriteLine("17点以上になったため、ディーラーの番を終了します");
                     break;
@@ -171,23 +171,23 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// プレイヤーとディーラーの得点に基づいてゲームの結果を判定するメソッド。
+        /// プレイヤーとディーラーの得点に基づいてゲームの結果を判定する
         /// </summary>
-        private GameResult Determine()
+        private GameResult DetermineGameResult()
         {
-            if (Player.GetTotal() > 21)
+            if (Player.GetHandTotal() > 21)
             {
                 return GameResult.Lose;
             }
-            else if (Dealer.GetTotal() > 21)
+            else if (Dealer.GetHandTotal() > 21)
             {
                 return GameResult.Win;
             }
-            else if (Player.GetTotal() > Dealer.GetTotal())
+            else if (Player.GetHandTotal() > Dealer.GetHandTotal())
             {
                 return GameResult.Win;
             }
-            else if (Player.GetTotal() == Dealer.GetTotal())
+            else if (Player.GetHandTotal() == Dealer.GetHandTotal())
             {
                 return GameResult.Draw;
             }
@@ -198,29 +198,29 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// プレイヤーまたはディーラーの情報（名前、カード、得点）を表示するメソッド。
+        /// プレイヤーまたはディーラーの情報（名前、カード、得点）を表示する
         /// </summary>
         /// <param name="name">プレイヤーまたはディーラーの名前</param>
         /// <param name="player">プレイヤーまたはディーラーのオブジェクト</param>
-        private void DisplayInfo(string name, Player player)
+        private void DisplayPlayerInfo(string name, Player player)
         {
             StringBuilder mess = new StringBuilder();
             mess.AppendLine($"{name}");
             mess.AppendLine($"　カード：{player.ShowCards()}");
-            mess.AppendLine($"　得点：{player.GetTotal()}");
+            mess.AppendLine($"　得点：{player.GetHandTotal()}");
             mess.AppendLine(Line);
             Console.WriteLine(mess.ToString());
         }
 
         /// <summary>
-        /// コンソールに結果のメッセージを表示するメソッド。
+        /// コンソールに結果のメッセージを表示する
         /// </summary>
         private void ShowResult()
         {
-            DisplayInfo("あなた", Player);
-            DisplayInfo("ディーラー", Dealer);
+            DisplayPlayerInfo("あなた", Player);
+            DisplayPlayerInfo("ディーラー", Dealer);
 
-            GameResult result = Determine();
+            GameResult result = DetermineGameResult();
             if (result == GameResult.Win)
             {
                 Console.WriteLine("勝敗 ： あなたの勝ちです！");

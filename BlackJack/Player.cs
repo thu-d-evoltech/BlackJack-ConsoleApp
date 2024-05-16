@@ -17,9 +17,9 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// プレイヤーの持っているカードの合計を計算するメッソド。
+        /// プレイヤーの持っているカードの合計を計算する
         /// </summary>
-        public int GetTotal()
+        public int GetHandTotal()
         {
             int total = 0;
             foreach (Card card in Hand)
@@ -30,7 +30,7 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// プレイヤーとディーラーの持っているカードを表示するメッソド。
+        /// プレイヤーとディーラーの持っているカードを表示する
         /// </summary>
         public string ShowCards()
         {
@@ -44,7 +44,7 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// ディーラーのカードを表示するメッソド。
+        /// ディーラーのカードを表示する
         /// </summary>
         public void ShowDealerCards() 
         {

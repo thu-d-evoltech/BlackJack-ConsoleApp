@@ -15,11 +15,11 @@ namespace BlackJack
         {
             Decks = new List<Card>();
             InitializeDeck();
-            Shuffle();
+            ShuffleCard();
         }
 
         /// <summary>
-        /// デッキの初期化するメソッド
+        /// デッキの初期化する
         /// </summary>
         private void InitializeDeck()
         {
@@ -33,13 +33,12 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// カードをシャッフルするメソッド
+        /// カードをシャッフルする
         /// </summary>
-        private void Shuffle()
+        private void ShuffleCard()
         {
             Random random = new Random();
             int n = Decks.Count;
-
             while (n > 1)
             {
                 n--;
@@ -51,7 +50,7 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// カードの配る機能と引く機能を実行するメソッド
+        /// カードの配る機能と引く機能を実行する
         /// </summary>
         public Card DrawCard()
         {
