@@ -4,7 +4,7 @@ namespace BlackJack
     internal class Deck
     {
         /// <summary>
-        /// 山札の宣言
+        /// 山札のリスト
         /// </summary>
         private List<Card> Decks;
 
@@ -13,6 +13,9 @@ namespace BlackJack
         /// </summary>
         public Deck()
         {
+            /// <summary>
+            /// 山札のリストのインスタンス
+            /// </summary>
             Decks = new List<Card>();
             InitializeDeck();
             ShuffleCard();
