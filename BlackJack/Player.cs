@@ -13,9 +13,7 @@ namespace BlackJack
         /// </summary>
         public Player()
         {
-            /// <summary>
-            /// 持っているカードのリストのインスタンス
-            /// </summary>
+            // 持っているカードのリストのインスタンス
             Hand = new List<Card>();
         }
 

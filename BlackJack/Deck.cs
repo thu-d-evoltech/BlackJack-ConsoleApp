@@ -13,9 +13,7 @@ namespace BlackJack
         /// </summary>
         public Deck()
         {
-            /// <summary>
-            /// 山札のリストのインスタンス
-            /// </summary>
+            // 山札のリストのインスタンス
             Decks = new List<Card>();
             InitializeDeck();
             ShuffleCard();

@@ -25,19 +25,13 @@ namespace BlackJack
         /// </summary>
         public PlayGame()
         {
-            /// <summary>
-            /// 山札のインスタンス
-            /// </summary>
+            // 山札のインスタンス
             Deck = new Deck();
 
-            /// <summary>
-            /// プレイヤーのインスタンス
-            /// </summary>
+            // プレイヤーのインスタンス
             Player = new Player();
 
-            /// <summary>
-            /// ディーラーのインスタンス
-            /// </summary>
+            // ディーラーのインスタンス
             Dealer = new Player();
         }
 
@@ -176,9 +170,20 @@ namespace BlackJack
         /// </summary>
         private enum GameResult
         {
-            Win,　// 勝ち
-            Lose,　// 負け
-            Draw　　//引き分け
+            /// <summary>
+            /// 勝ち
+            /// </summary>
+            Win,
+
+            /// <summary>
+            /// 負け
+            /// </summary>
+            Lose,
+
+            /// <summary>
+            /// 引き分け
+            /// </summary>
+            Draw
         }
 
         /// <summary>

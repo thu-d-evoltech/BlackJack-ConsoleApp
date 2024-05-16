@@ -33,6 +33,7 @@ public class Program
         Thread.Sleep(miliseconds);
     }
 }
+
 /// <summary>
 /// Separatorsクラスは、区切り線を表す定数文字列を保持する
 /// </summary>
