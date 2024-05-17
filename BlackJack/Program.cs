@@ -37,7 +37,7 @@ public class Program
 /// <summary>
 /// Separatorsクラスは、区切り線を表す定数文字列を保持する
 /// </summary>
-public class Separators
+public class ConstString
 {
     /// <summary>
     /// 区切り線を表す定数文字列
