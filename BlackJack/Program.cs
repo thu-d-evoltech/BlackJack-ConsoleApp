@@ -19,7 +19,7 @@ public class Program
             string input = Console.ReadLine();
             isContinuePlaying = (input.ToUpper() == "Y");
         }
-        Console.WriteLine(Separators.Line);
+        Console.WriteLine(ConstString.Line);
         Console.WriteLine("ブラックジャック終了！ありがとうございました★");
         Console.ReadKey();
     }
@@ -37,7 +37,7 @@ public class Program
 /// <summary>
 /// Separatorsクラスは、区切り線を表す定数文字列を保持する
 /// </summary>
-public class ConstString
+public class Separators
 {
     /// <summary>
     /// 区切り線を表す定数文字列
