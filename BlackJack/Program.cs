@@ -35,7 +35,7 @@ public class Program
 }
 
 /// <summary>
-/// ConstStringクラスは、区切り線を表す定数文字列を保持する
+/// ConstStringクラスの作成
 /// </summary>
 public class ConstString
 {
